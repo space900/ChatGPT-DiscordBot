@@ -30,9 +30,11 @@ client.on('messageCreate', async function(message){
             max_tokens: 800,
             stop: ["ChatGPT:", "space9000:"],
         })
-
-        message.reply(`${gptResponse.data.choices[0].text}`);
-        return;
+        if (message.content.startsWith("#")){
+            message.reply(`${gptResponse.data.choices[0].text}`);
+            return;
+        }
+        
 
     } catch(err) {
         console.log(err);
